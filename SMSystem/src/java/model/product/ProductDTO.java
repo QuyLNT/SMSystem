@@ -11,7 +11,7 @@ package model.product;
  */
 public class ProductDTO {
     private int productId;
-    private int brandID;
+    private int brandId;
     private int userOjectId;
     private String detail;
     private boolean hot;
@@ -24,7 +24,7 @@ public class ProductDTO {
 
     public ProductDTO() {
         this.productId = 0;
-        this.brandID = 0;
+        this.brandId = 0;
         this.userOjectId = 0;
         this.detail = "";
         this.hot = true;
@@ -38,7 +38,7 @@ public class ProductDTO {
 
     public ProductDTO(int productId, int brandID, int userOjectId, String detail, boolean hot, String name, String color, float price, float sale, int warrantyPeriod, boolean productStaus) {
         this.productId = productId;
-        this.brandID = brandID;
+        this.brandId = brandID;
         this.userOjectId = userOjectId;
         this.detail = detail;
         this.hot = hot;
@@ -55,7 +55,7 @@ public class ProductDTO {
     }
 
     public int getBrandID() {
-        return brandID;
+        return brandId;
     }
 
     public int getUserOjectId() {
@@ -99,7 +99,7 @@ public class ProductDTO {
     }
 
     public void setBrandID(int brandID) {
-        this.brandID = brandID;
+        this.brandId = brandID;
     }
 
     public void setUserOjectId(int userOjectId) {
