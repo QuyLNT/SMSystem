@@ -77,10 +77,11 @@ and open the template in the editor.
                     <h2>Sign in</h2>
 
                     <form action="MainController" method="post" id="form">
-                        <input type="text" placeholder="Email" name="usernameOrEmail" required />
+                        <input type="text" placeholder="User Name or Email" name="usernameOrEmail" required />
                         <input type="password" placeholder="Password" name="pass" required />
                         <a href="#" class="forgot-password">Forgot your password?</a>
                         <div class="g-recaptcha" data-sitekey="6LdXPwgqAAAAADH4aZqMia8RCAPe-jw1GISS5lHp" style="display: flex;justify-content: center"></div>
+                        <input value="Sign In" name="action" hidden="">
                         <input type="submit" class="btn signin-btn" value="Sign In" />                   
                     </form>
                 </div>
