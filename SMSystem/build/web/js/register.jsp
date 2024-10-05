@@ -1,9 +1,11 @@
+<%-- 
+    Document   : register
+    Created on : Jun 13, 2024, 11:11:39 PM
+    Author     : Luu Minh Quan
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -11,7 +13,7 @@ and open the template in the editor.
         <meta name="keywords" content="codelean, unica, creative, html">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Login</title>
+        <title>Register</title>
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -25,8 +27,9 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/nice-select.css" type="text/css">
         <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-        <link rel="stylesheet" href="css/style.css" type="text/css"> 
         <link rel="stylesheet" href="css/style1.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+
     </head>
 
     <body>
@@ -52,6 +55,9 @@ and open the template in the editor.
                         </div>
                     </div>
                     <div class="ht-right">
+                        <!--                        <a href="login.jsp" class="login-panel">
+                                                    <i class="fa fa-user">Login</i>
+                                                </a>-->
                         <div class="lan-selector">
                             <select class="language_drop" name="countries" id="countries" style="width: 300px;">
                                 <option value="yt" data-image="img/flag-1.jpg" data-imagecss="flag yt" data-title="English">
@@ -71,17 +77,19 @@ and open the template in the editor.
 
             </div>
         </header>
+
         <div class="container1">
             <div class="signin-signup">
                 <div class="signin">
                     <h2>Sign in</h2>
-
+                    
                     <form action="MainController" method="post" id="form">
-                        <input type="text" placeholder="Email" name="usernameOrEmail" required />
+                        <input type="text" placeholder="Username" name="username" required />
+                        <input type="text" placeholder="Email" name="EmailAdress" required />
                         <input type="password" placeholder="Password" name="pass" required />
-                        <a href="#" class="forgot-password">Forgot your password?</a>
-                        <div class="g-recaptcha" data-sitekey="6LdXPwgqAAAAADH4aZqMia8RCAPe-jw1GISS5lHp" style="display: flex;justify-content: center"></div>
-                        <input type="submit" class="btn signin-btn" value="Sign In" />                   
+                        <input type="password" placeholder="ComfirmPass" name="comfirmpass" required />
+                        <a href="#" class="haveAccount">Have account ?</a>
+                        <input type="submit" class="btn signin-btn" value="Sign Up" />
                     </form>
                 </div>
             </div>
@@ -89,16 +97,16 @@ and open the template in the editor.
                 <div class="overlay-content">
                     <h2>Hello, Friend!</h2>
                     <p>Enter your personal details and start journey with us</p>
-                    <a href="register.jsp"><button class="btn signup-btn">Sign Up</button></a>
+                    <a href="register.jsp"><button class="btn signup-btn">Sign In</button></a>
                 </div>
             </div>
         </div>
-
+        <!-- Register Section Begin -->
+        
         <!-- Register Section End -->
+        
 
-        <!-- Partner Logo Section Begin -->
-
-        <!-- Footer Section End -->
+        
 
         <!-- Js Plugins -->
         <script src="js/jquery-3.3.1.min.js"></script>
@@ -111,7 +119,7 @@ and open the template in the editor.
         <script src="js/jquery.slicknav.js"></script>
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/main.js"></script>
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script>
             window.onload = function () {
                 let isValid = false;
