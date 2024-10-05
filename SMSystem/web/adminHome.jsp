@@ -10,8 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Nice shop</title>
-        <title>Kẻ kiểm soát thông tin</title>
+        <title>SM Shop</title>
+        
         <link rel="stylesheet" type="text/css" href="css/home.css"/>
         <link
             rel="stylesheet"
@@ -29,7 +29,7 @@
                         <div class="navbar-nav">
                             <div class="title">
                                 <h3>
-                                    <img src="favicon_io/favicon-32x32.png" alt="anh chu cho" />
+                                    <img src="img/logoweb.png" alt="" width="100%" height="100%"/>
                                     <span class="title-text">Nice</span>
                                 </h3>
                             </div>
@@ -69,6 +69,12 @@
                                     <a href="orderList.jsp" class="nav-link">
                                         <i class="fa-solid fa-file-invoice"></i>
                                         <span class="link-text">Order</span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="LogoutController" class="nav-link">
+                                        <i class="fa-solid fa-tag"></i>
+                                        <span class="link-text">Brand</span>
                                     </a>
                                 </li>
                                 <li class="nav-list-item">

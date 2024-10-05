@@ -88,7 +88,7 @@
                         <input type="text" placeholder="Email" name="EmailAdress" required />
                         <input type="password" placeholder="Password" name="pass" required />
                         <input type="password" placeholder="ComfirmPass" name="comfirmpass" required />
-                        <a href="#" class="haveAccount">Have account ?</a>
+                        <a href="login.jsp" class="haveAccount">Have account ?</a>
                         <div class="g-recaptcha" data-sitekey="6LdXPwgqAAAAADH4aZqMia8RCAPe-jw1GISS5lHp" style="display: flex;justify-content: center"></div>
                         <input type="submit" class="btn signin-btn" value="Sign Up" />
                     </form>
@@ -98,7 +98,7 @@
                 <div class="overlay-content">
                     <h2>Hello, Friend!</h2>
                     <p>Enter your personal details and start journey with us</p>
-                    <a href="register.jsp"><button class="btn signup-btn">Sign In</button></a>
+                    <a href="login.jsp"><button class="btn signup-btn">Sign In</button></a>
                 </div>
             </div>
         </div>
