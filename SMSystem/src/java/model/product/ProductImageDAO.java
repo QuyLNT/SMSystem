@@ -10,5 +10,4 @@ package model.product;
  * @author LENOVO
  */
 public class ProductImageDAO {
-    
 }

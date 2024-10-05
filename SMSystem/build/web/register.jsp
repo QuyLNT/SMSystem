@@ -28,6 +28,7 @@
         <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
         <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
         <link rel="stylesheet" href="css/style1.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
 
     </head>
 
@@ -44,12 +45,12 @@
                     <div class="ht-left">
                         <div class="mail-service">
                             <i class="fa fa-envelope">
-                                minhquan141104@gmail.com
+                                smsystem@gmail.con
                             </i>
                         </div>
                         <div class="phone-service">
                             <i class="fa fa-phone">
-                                +84 78 566 3033
+                                +84 123456789
                             </i>
                         </div>
                     </div>
@@ -77,164 +78,36 @@
             </div>
         </header>
 
+        <div class="container1">
+            <div class="signin-signup">
+                <div class="signin">
+                    <h2>Sign up</h2>
+                    
+                    <form action="MainController" method="post" id="form">
+                        <input type="text" placeholder="Username" name="username" required />
+                        <input type="text" placeholder="Email" name="EmailAdress" required />
+                        <input type="password" placeholder="Password" name="pass" required />
+                        <input type="password" placeholder="ComfirmPass" name="comfirmpass" required />
+                        <a href="#" class="haveAccount">Have account ?</a>
+                        <div class="g-recaptcha" data-sitekey="6LdXPwgqAAAAADH4aZqMia8RCAPe-jw1GISS5lHp" style="display: flex;justify-content: center"></div>
+                        <input type="submit" class="btn signin-btn" value="Sign Up" />
+                    </form>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h2>Hello, Friend!</h2>
+                    <p>Enter your personal details and start journey with us</p>
+                    <a href="register.jsp"><button class="btn signup-btn">Sign In</button></a>
+                </div>
+            </div>
+        </div>
         <!-- Register Section Begin -->
-        <div class="register-login-section spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-3">
-                        <div class="register-form">
-                            <h2>Register</h2>
-                            <form action="RegisterServlet" id="form">
-                                <div class="group-input">
-                                    <label for="username">Username *</label>
-                                    <input type="text" id="username" name="userName" required>
-                                </div>
-                                <div class="group-input">
-                                    <label for="Email">Email address *</label>
-                                    <input type="email" id="username" name="email" required>
-                                </div>
-                                <div class="group-input">
-                                    <label for="pass">Password</label>
-                                    <input type="password" id="pass" name="password" required>
-                                </div>
-                                <div class="group-input">
-                                    <label for="con-pass">Confirm Password</label>
-                                    <input type="password" id="con-pass" name="confirmPassword" required>
-                                </div>
-                                <%
-                                    String error = (String) request.getAttribute("MESSAGE");
-                                    if (error == null) {
-                                        error = "";
-                                    }
-                                %>
-                                <h4 style="color: red"><%= error%></h4>
-                                <div class="g-recaptcha" data-sitekey="6LdXPwgqAAAAADH4aZqMia8RCAPe-jw1GISS5lHp" style="display: flex;justify-content: center"></div>
-                                <div id="error" style="background: lightcoral; display: flex; justify-content: center"></div>
-
-                                <button type="submit" class="site-btn register-btn">REGISTER</button>
-                            </form>
-                            <div class="switch-login">
-                                <a href="login.jsp" class="or-login">Or Log in</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <!-- Register Section End -->
-        <!-- Partner Logo Section Begin -->
-        <div class="partner-logo">
-            <div class="container">
-                <div class="logo-carousel owl-carousel">
-                    <div class="logo-item">
-                        <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-1.png">
-                        </div>
-                    </div>
-                    <div class="logo-item">
-                        <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-2.png">
-                        </div>
-                    </div>
-                    <div class="logo-item">
-                        <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-3.png">
-                        </div>
-                    </div>
-                    <div class="logo-item">
-                        <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-4.png">
-                        </div>
-                    </div>
-                    <div class="logo-item">
-                        <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-5.png">
-                        </div>
-                    </div>
-                    <div class="logo-item">
-                        <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-1.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Partner Logo Section End -->
+        
 
-        <!-- Footer Section Begin -->
-        <footer class="footer-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="footer-left">
-                            <div class="footer-logo">
-                                <a href="#">
-                                    <img src="favicon_io/android-chrome-192x192.png" alt="">
-                                </a>
-                            </div>
-                            <ul>
-                                <li>1A Yet Kieu . Ha Noi</li>
-                                <li>Phone: +84 78 566 3033</li>
-                                <li>Email: minhquan141104@gmail.com</li>
-                            </ul>
-                            <div class="footer-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 offset-lg-1">
-                        <div class="footer-widget">
-                            <h5>Information</h5>
-                            <ul>
-                                <li><a href="">About Us</a></li>
-                                <li><a href="">Checkout</a></li>
-                                <li><a href="">Contact</a></li>
-                                <li><a href="">Services</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="footer-widget">
-                            <h5>My Account</h5>
-                            <ul>
-                                <li><a href="">My Account</a></li>
-                                <li><a href="">Contact</a></li>
-                                <li><a href="">Shopping Cart</a></li>
-                                <li><a href="">Shop</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="newsletter-item">
-                            <h5>Join Out Newsletter Now</h5>
-                            <p>Get E-mail updates about our latest shop and special offers.</p>
-                            <form action="#" class="subcribe-form">
-                                <input type="text" placeholder="Enter Your Email">
-                                <button type="button">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright-reserved">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="copyright-text">
-                                Copyright ©2024 All reserved | MinQan
-                            </div>
-                            <div class="payment-pic">
-                                <img src="img/payment-method.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Footer Section End -->
+        
 
         <!-- Js Plugins -->
         <script src="js/jquery-3.3.1.min.js"></script>

@@ -81,7 +81,7 @@
         <div class="container1">
             <div class="signin-signup">
                 <div class="signin">
-                    <h2>Sign up</h2>
+                    <h2>Sign in</h2>
                     
                     <form action="MainController" method="post" id="form">
                         <input type="text" placeholder="Username" name="username" required />
@@ -89,7 +89,6 @@
                         <input type="password" placeholder="Password" name="pass" required />
                         <input type="password" placeholder="ComfirmPass" name="comfirmpass" required />
                         <a href="#" class="haveAccount">Have account ?</a>
-                        <div class="g-recaptcha" data-sitekey="6LdXPwgqAAAAADH4aZqMia8RCAPe-jw1GISS5lHp" style="display: flex;justify-content: center"></div>
                         <input type="submit" class="btn signin-btn" value="Sign Up" />
                     </form>
                 </div>
