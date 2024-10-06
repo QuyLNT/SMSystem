@@ -40,6 +40,20 @@ public class ProductDTO {
         this.productStatus = false;
     }
 
+    public ProductDTO(int productId, int brandId, int userOjectId, String detail, boolean hot, String name, String color, float price, float sale, int warrantyPeriod, boolean productStatus) {
+        this.productId = productId;
+        this.brandId = brandId;
+        this.userOjectId = userOjectId;
+        this.detail = detail;
+        this.hot = hot;
+        this.name = name;
+        this.color = color;
+        this.price = price;
+        this.sale = sale;
+        this.warrantyPeriod = warrantyPeriod;
+        this.productStatus = productStatus;
+    }
+
     public ProductDTO(int productId, int brandID, int userOjectId, String detail, boolean hot, String name, String color, float price, float sale, int warrantyPeriod, boolean productStaus,ArrayList<ProductImageDTO> listImages) {
         this.productId = productId;
         this.brandId = brandID;
