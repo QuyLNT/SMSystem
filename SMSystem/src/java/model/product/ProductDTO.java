@@ -5,6 +5,8 @@
  */
 package model.product;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author LENOVO
@@ -13,6 +15,7 @@ public class ProductDTO {
     private int productId;
     private int brandId;
     private int userOjectId;
+    ArrayList<ProductImageDTO> listImages;
     private String detail;
     private boolean hot;
     private String name;
@@ -26,6 +29,7 @@ public class ProductDTO {
         this.productId = 0;
         this.brandId = 0;
         this.userOjectId = 0;
+        this.listImages = new ArrayList<>();
         this.detail = "";
         this.hot = true;
         this.name = "";
@@ -36,10 +40,11 @@ public class ProductDTO {
         this.productStaus = false;
     }
 
-    public ProductDTO(int productId, int brandID, int userOjectId, String detail, boolean hot, String name, String color, float price, float sale, int warrantyPeriod, boolean productStaus) {
+    public ProductDTO(int productId, int brandID, int userOjectId, String detail, boolean hot, String name, String color, float price, float sale, int warrantyPeriod, boolean productStaus,ArrayList<ProductImageDTO> listImages) {
         this.productId = productId;
         this.brandId = brandID;
         this.userOjectId = userOjectId;
+        this.listImages= listImages;
         this.detail = detail;
         this.hot = hot;
         this.name = name;
@@ -50,14 +55,26 @@ public class ProductDTO {
         this.productStaus = productStaus;
     }
 
-    public int getProductId() {
-        return productId;
-    }
-
-    public int getBrandID() {
+    public int getBrandId() {
         return brandId;
     }
 
+    public void setBrandId(int brandId) {
+        this.brandId = brandId;
+    }
+
+    public ArrayList<ProductImageDTO> getListImages() {
+        return listImages;
+    }
+
+    public void setListImages(ArrayList<ProductImageDTO> listImages) {
+        this.listImages = listImages;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+    
     public int getUserOjectId() {
         return userOjectId;
     }
@@ -98,9 +115,6 @@ public class ProductDTO {
         this.productId = productId;
     }
 
-    public void setBrandID(int brandID) {
-        this.brandId = brandID;
-    }
 
     public void setUserOjectId(int userOjectId) {
         this.userOjectId = userOjectId;
@@ -137,9 +151,16 @@ public class ProductDTO {
     public void setProductStaus(boolean productStaus) {
         this.productStaus = productStaus;
     }
-    
-    
-    
+         
+    public String getAvatarPath(){
+        String avatarPath = null;
+        for(ProductImageDTO ele: this.listImages){
+            if(ele.getIsAvatar() == true){
+                avatarPath = ele.getImagePath();
+            }
+        }
+        return avatarPath;
+    }
     
  
 }

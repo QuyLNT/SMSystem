@@ -5,11 +5,11 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.ItemDTO"%>
-<%@page import="model.CartDTO"%>
+<%@page import="model.cart.CartItems"%>
+<%@page import="model.cart.CartDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="model.ProductDTO"%>
-<%@page import="model.UserDTO"%>
+<%@page import="model.product.ProductDTO"%>
+<%@page import="model.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -53,7 +53,7 @@
                     <div class="ht-left">
                         <div class="mail-service">
                             <i class="fa fa-envelope">
-                                smstem@gmail.com
+                                smsystem@gmail.com
                             </i>
                         </div>
                         <div class="phone-service">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <%
-                        UserDTO u = (UserDTO) session.getAttribute("user");
+                        UserDTO u = (UserDTO) session.getAttribute("LOGIN_USER");
                     %>
                     <div class="ht-right">
                         <div class="login-panel" id="user-btn">
@@ -164,18 +164,18 @@
                                                         if (cart == null) {
                                                             cart = new CartDTO();
                                                         }
-                                                        List<ItemDTO> ls = cart.getList();
+                                                        List<CartItems> ls = cart.getCartItemsList();
                                                         if (ls != null) {
                                                             double total = 0;
                                                             int count = 0;
-                                                            for (ItemDTO ele : ls) {
-                                                                total += (ele.getPrice() * ele.getQuantity());
+                                                            for (CartItems ele : ls) {
+                                                                total += (ele.getCartItemId()* ele.getQuantity());
                                                     %>
                                                     <tr>
-                                                        <td class="si-pic"><img src="<%= ele.getProduct().getImg()%>" style="height: 76px"></td>
+                                                        <td class="si-pic"><img src="<%= ele.getProduct().getAvatarPath()%>" style="height: 76px"></td>
                                                         <td class="si-text">
                                                             <div class="product-selected">
-                                                                <p>$<%= String.format("%.1f", ele.getPrice())%> x <%= ele.getQuantity()%></p>
+                                                                <p>$<%= String.format("%.1f", ele.getProduct().getPrice())%> x <%= ele.getQuantity()%></p>
                                                                 <h6><%= ele.getProduct().getName()%></h6>
                                                                 <h6>Size <%=ele.getSize()%></h6>
                                                             </div>
@@ -345,7 +345,7 @@
                             %>
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="<%=ele.getImg()%>" alt="">
+                                    <img src="<%=ele.getAvatarPath()%>" alt="">
                                     <%
                                         if (ele.getSale() != 0) {
                                     %>
@@ -426,7 +426,7 @@
                             %>
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="<%=ob.getImg()%>" alt="">
+                                    <img src="<%=ob.getAvatarPath()%>" alt="">
                                     <%if (ob.getSale() != 0) {
                                     %>
                                     <div class="sale">Sale</div>
@@ -523,7 +523,7 @@
                             %>
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="<%=ele.getImg()%>" alt="">
+                                    <img src="<%=ele.getAvatarPath()%>" alt="">
                                     <%
                                         if (ele.getSale() != 0) {
                                     %>

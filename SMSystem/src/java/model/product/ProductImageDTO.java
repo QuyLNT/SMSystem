@@ -41,6 +41,10 @@ public class ProductImageDTO {
         return imagePath;
     }
 
+    public boolean getIsAvatar(){
+        return isAvatar;
+    }
+    
     public boolean isIsAvatar() {
         return isAvatar;
     }

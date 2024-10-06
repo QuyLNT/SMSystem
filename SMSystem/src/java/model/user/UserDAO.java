@@ -6,6 +6,7 @@
 package model.user;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,13 +18,13 @@ import utils.DBUtils;
  * @author LENOVO
  */
 public class UserDAO {
-    private static final String LOGIN = "SELECT " +
-        "fullName, userName, password, phoneNumber, sex, email " +
-        "FROM users WHERE userName=? AND password=?";
+    private static final String LOGIN = "SELECT userName,fullName,userId,phoneNumber,sex,email,isActive,roleId,createdAt\n" +
+"FROM users\n" +
+"WHERE (userName =? OR email=?) AND password = ?";
 
 
     
-    public UserDTO checkLogin(String userName, String password) throws SQLException, ClassNotFoundException, NamingException {
+    public UserDTO checkLogin(String userIndentify, String password) throws SQLException, ClassNotFoundException, NamingException {
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -32,28 +33,24 @@ public class UserDAO {
             conn = DBUtils.getConnection();
             if(conn!=null){
                 ptm = conn.prepareStatement(LOGIN);
-                ptm.setString(1, userName);
-                ptm.setString(2, password);
+                ptm.setString(1, userIndentify);
+                ptm.setString(2, userIndentify);
+                ptm.setString(3, password);
                 rs = ptm.executeQuery();
                 if(rs.next()){
-//                    int userId = rs.getInt("userId");
-//                    String fullName = rs.getString("fullName");
-//                    String phoneNumber = rs.getString("phoneNumber");
-//                    String sex = rs.getString("sex");
-//                    String email = rs.getString("email");
-//                    String street = rs.getString("street");
-//                    String district = rs.getString("district");
-//                    String city = rs.getString("city");
-//                    boolean isActive = rs.getBoolean("isActive");
-//                    String roleId = rs.getString("roleId");
-//                    Date createdAt = rs.getDate("createdAt");
+                    int userId = rs.getInt("userId");
+                    String userName = rs.getString("userName");
+                    String fullName = rs.getString("fullName");
+                    String phoneNumber = rs.getString("phoneNumber");
+                    String sex = rs.getString("sex");
+                    String email = rs.getString("email");
+                    boolean isActive = rs.getBoolean("isActive");
+                    String roleId = rs.getString("roleId");
+                    Date createdAt = rs.getDate("createdAt");
 
-
-                    user = new UserDTO();
+                    user = new UserDTO(userId, fullName, userName, password, phoneNumber, sex, email, isActive, roleId, createdAt);
                 }
             }
-                    
-
         }finally{
             if(rs!=null) rs.close();
             if(ptm!=null) ptm.close();
