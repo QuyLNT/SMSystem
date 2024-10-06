@@ -5,10 +5,23 @@
  */
 package model.category;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public class UserObjectDAO {
+    public List<UserObjectDTO> getAllUserObject(){
+        List<UserObjectDTO> listUO = new ArrayList();
+        return listUO;
+    }
+    
+    public UserObjectDTO getUserObjectById(int userObjectId){
+        UserObjectDTO uOb = new UserObjectDTO();
+        return uOb;
+    }
+    
     
 }

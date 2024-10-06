@@ -63,11 +63,11 @@
                         </div>
                     </div>
                     <%
-                        UserDTO u = (UserDTO) session.getAttribute("LOGIN_USER");
+                        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                     %>
                     <div class="ht-right">
                         <div class="login-panel" id="user-btn">
-                            <i class="fa fa-user">  <%=u.getFullName()%></i>
+                            <i class="fa fa-user">  <%= (loginUser != null) ? loginUser.getFullName() : "Guest"%></i>
 
                         </div>
                         <section class="user">
@@ -340,7 +340,7 @@
                         </div>
                         <div class="product-slider owl-carousel">
                             <%
-                                List<ProductDTO> ls1 = (List) session.getAttribute("womenList");
+                                List<ProductDTO> ls1 = (List<ProductDTO>) session.getAttribute("womenList");
                                 for (ProductDTO ele : ls1) {
                             %>
                             <div class="product-item">
@@ -420,7 +420,7 @@
                         </div>
                         <div class="product-slider owl-carousel">
                             <%
-                                List<ProductDTO> ls = (List) session.getAttribute("menList");
+                                List<ProductDTO> ls = (List<ProductDTO>) session.getAttribute("menList");
                                 for (ProductDTO ob : ls) {
 
                             %>
@@ -518,7 +518,7 @@
                         </div>
                         <div class="product-slider owl-carousel">
                             <%
-                                List<ProductDTO> ls2 = (List) session.getAttribute("kidList");
+                                List<ProductDTO> ls2 = (List<ProductDTO>) session.getAttribute("kidList");
                                 for (ProductDTO ele : ls2) {
                             %>
                             <div class="product-item">

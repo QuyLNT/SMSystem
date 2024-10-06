@@ -11,18 +11,18 @@ package model.category;
  */
 public class UserObjectDTO {
     private int userObjectId;
-    private String userObjetctName;
+    private String userObjectName;
     private String detail;
 
     public UserObjectDTO() {
         userObjectId = 0;
-        userObjetctName = "";
+        userObjectName = "";
         detail = "";
     }
 
     public UserObjectDTO(int userObjectId, String userObjetctName, String detail) {
         this.userObjectId = userObjectId;
-        this.userObjetctName = userObjetctName;
+        this.userObjectName = userObjetctName;
         this.detail = detail;
     }
 
@@ -34,12 +34,12 @@ public class UserObjectDTO {
         this.userObjectId = userObjectId;
     }
 
-    public String getUserObjetctName() {
-        return userObjetctName;
+    public String getUserObjectName() {
+        return userObjectName;
     }
 
-    public void setUserObjetctName(String userObjetctName) {
-        this.userObjetctName = userObjetctName;
+    public void setUserObjectName(String userObjectName) {
+        this.userObjectName = userObjectName;
     }
 
     public String getDetail() {

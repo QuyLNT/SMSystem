@@ -23,7 +23,7 @@ public class ProductDTO {
     private float price;
     private float sale;
     private int warrantyPeriod;
-    private boolean productStaus;
+    private boolean productStatus;
 
     public ProductDTO() {
         this.productId = 0;
@@ -37,7 +37,7 @@ public class ProductDTO {
         this.price = 0.00f;
         this.sale = 0.0f;
         this.warrantyPeriod = 0;
-        this.productStaus = false;
+        this.productStatus = false;
     }
 
     public ProductDTO(int productId, int brandID, int userOjectId, String detail, boolean hot, String name, String color, float price, float sale, int warrantyPeriod, boolean productStaus,ArrayList<ProductImageDTO> listImages) {
@@ -52,7 +52,7 @@ public class ProductDTO {
         this.price = price;
         this.sale = sale;
         this.warrantyPeriod = warrantyPeriod;
-        this.productStaus = productStaus;
+        this.productStatus = productStaus;
     }
 
     public int getBrandId() {
@@ -107,8 +107,8 @@ public class ProductDTO {
         return warrantyPeriod;
     }
 
-    public boolean isProductStaus() {
-        return productStaus;
+    public boolean isProductStatus() {
+        return productStatus;
     }
 
     public void setProductId(int productId) {
@@ -148,8 +148,8 @@ public class ProductDTO {
         this.warrantyPeriod = warrantyPeriod;
     }
 
-    public void setProductStaus(boolean productStaus) {
-        this.productStaus = productStaus;
+    public void setProductStatus(boolean productStatus) {
+        this.productStatus = productStatus;
     }
          
     public String getAvatarPath(){
@@ -162,5 +162,10 @@ public class ProductDTO {
         return avatarPath;
     }
     
+    
+    // CÁI NÀY CHƯA LÀM NÈ, LÀM ĐEEEEEEE
+    public int getStock(){
+        return 9999;
+    }
  
 }
