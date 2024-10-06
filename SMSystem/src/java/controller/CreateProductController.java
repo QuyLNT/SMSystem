@@ -28,19 +28,18 @@ public class CreateProductController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        int productId = Integer.parseInt(request.getParameter("productId"));
-        int brandId = Integer.parseInt(request.getParameter("brandId"));
-        int userOjectId = Integer.parseInt(request.getParameter("userObjectId"));
+        int brandId = Integer.parseInt(request.getParameter("brandID"));
+        int userOjectId = Integer.parseInt(request.getParameter("userObjectID"));
         String detail = request.getParameter("detail");
-        boolean hot = Boolean.parseBoolean(request.getParameter("hot"));
-        String name = request.getParameter("name");
+        boolean hot = request.getParameter("hot") != null;
+        String name = request.getParameter("Name");
         String color = request.getParameter("color");
         float price = Float.parseFloat(request.getParameter("price"));
-        float sale = Float.parseFloat(request.getParameter("size"));
+        float sale = Float.parseFloat(request.getParameter("sale"));
         int warrantyPeriod = Integer.parseInt(request.getParameter("warrantyPeriod"));
         boolean productStaus = Boolean.parseBoolean(request.getParameter("productStatus"));
 
-        ProductDTO product = new ProductDTO(productId, brandId, userOjectId, detail, hot, name, color, price, sale, warrantyPeriod, productStaus);
+        ProductDTO product = new ProductDTO(0, brandId, userOjectId, detail, hot, name, color, price, sale, warrantyPeriod, productStaus);
         ProductDAO dao = new ProductDAO();
         ProductImageDAO imageDao = new ProductImageDAO();
         
