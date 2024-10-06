@@ -14,14 +14,13 @@ public class CartItems {
     private ProductDTO product;
     private int cartItemId;
     private int cartId;
-    private int productId;
     private int quantity;
     private double size;
 
     public double getSize() {
         return size;
     }
-
+    
     public void setSize(double size) {
         this.size = size;
     }
@@ -50,14 +49,6 @@ public class CartItems {
         this.cartId = cartId;
     }
 
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
     public int getQuantity() {
         return quantity;
     }
@@ -66,22 +57,18 @@ public class CartItems {
         this.quantity = quantity;
     }
 
-    public CartItems(ProductDTO product, int cartItemId, int cartId, int productId, int quantity) {
+    public CartItems(ProductDTO product, int cartItemId, int cartId, int productId, int quantity, float size ) {
         this.product = product;
         this.cartItemId = cartItemId;
         this.cartId = cartId;
-        this.productId = productId;
         this.quantity = quantity;
         this.size=size;
     }
 
-  
-
     public CartItems() {
-        this.product = product;
+        this.product = new ProductDTO();
         this.cartItemId = 0;
         this.cartId = 0;
-        this.productId = 0;
         this.quantity = 0;
         this.size=0.0;
     }

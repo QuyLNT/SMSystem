@@ -7,6 +7,7 @@ package model.cart;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -17,7 +18,7 @@ public class CartDTO {
     private int cartId;
     private int customerId;
     private Date createdAt;
-    private ArrayList<CartItems> cartItemsList;
+    private List<CartItems> cartItemsList;
 
     public CartDTO(int cartId, int customerId, Date createdAt, ArrayList<CartItems> cartItemsList) {
         this.cartId = cartId;
@@ -58,7 +59,7 @@ public class CartDTO {
         this.createdAt = createdAt;
     }
 
-    public ArrayList<CartItems> getCartItemsList() {
+    public List<CartItems> getCartItemsList() {
         return cartItemsList;
     }
 

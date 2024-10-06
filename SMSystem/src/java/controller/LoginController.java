@@ -35,22 +35,41 @@ public class LoginController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private static final String ERROR="login.jsp";
-    private static final String SUCCESS="register.jsp";
-    private static final String ERROR_MESSAGE = "Your role is not support yet";
+    private static final String HOME_PAGE="homePage.jsp";
+    private static final String ADMIN_PAGE = "adminHome.jsp";
+    private static final String MANAGER_PAGE = "managerHome.jsp";
+    private static final String SHIPPER_PAGE = "shipperHome.jsp";
+    private static final String ERROR_MESSAGE = "";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try{
-            String userID = request.getParameter("usernameOrEmail");
+            String userIndentify = request.getParameter("usernameOrEmail");
             String password = request.getParameter("pass");
             UserDAO dao = new UserDAO();
-            UserDTO loginUser = dao.checkLogin(userID, password);
+            UserDTO loginUser = dao.checkLogin(userIndentify, password);
             if(loginUser!= null){
                 HttpSession session = request.getSession();
                 session.setAttribute("LOGIN_USER", loginUser);
                 String roleID = loginUser.getRoleId();
-                url= SUCCESS;
+                if(null != roleID)switch (roleID) {
+                    case "AD":
+                        url=ADMIN_PAGE;
+                        break;
+                    case "CUS":
+                        url=HOME_PAGE;
+                        break;
+                    case "MN":
+                        url=MANAGER_PAGE;
+                        break;
+                    case "SP":
+                        url=SHIPPER_PAGE;
+                        break;
+                    default:
+                        request.setAttribute("LOGIN_ERROR", ERROR_MESSAGE);
+                        break;
+                }        
             }
             
         }catch(ClassNotFoundException | SQLException | NamingException e){

@@ -4,12 +4,12 @@
     Author     : DELL
 --%>
 
-<%@page import="admin.sample.product.ProductDAO"%>
-<%@page import="admin.sample.product.ProductDTO"%>
-<%@page import="admin.sample.categories.CategoriesDAO"%>
-<%@page import="admin.sample.categories.CategoriesDTO"%>
-<%@page import="admin.sample.brand.BrandDAO"%>
-<%@page import="admin.sample.brand.BrandDTO"%>
+<%@page import="model.product.ProductDAO"%>
+<%@page import="model.product.ProductDTO"%>
+<%@page import="model.category.UserObjectDAO"%>
+<%@page import="model.category.UserObjectDTO"%>
+<%@page import="model.category.BrandDAO"%>
+<%@page import="model.category.BrandDTO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -111,7 +111,7 @@
 
                                 productList = (List<ProductDTO>) request.getAttribute("PRODUCT_LIST");
                                 if (productList == null) {
-                                    productList = productDao.getAllProducts();
+                                    productList = productDao.getAllProduct();
                                 }
 
                                 String ms = "";
@@ -149,11 +149,11 @@
                                                     <span class="input-group-text" id="inputGroup-sizing-sm">Category</span>
                                                     <select name="userObjectID" class="form-control" required>
                                                         <%
-                                                            CategoriesDAO categoriesDao = new CategoriesDAO();
-                                                            List<CategoriesDTO> categoriesList = categoriesDao.getAllCategories();
-                                                            for (CategoriesDTO category : categoriesList) {
+                                                            UserObjectDAO categoriesDao = new UserObjectDAO();
+                                                            List<UserObjectDTO> userObjectList = categoriesDao.getAllUserObject();
+                                                            for (UserObjectDTO uo : userObjectList) {
                                                         %>
-                                                        <option value="<%= category.getUserObjectID()%>"><%= category.getUserObjectName()%></option>
+                                                        <option value="<%= uo.getUserObjectId()%>"><%= uo.getUserObjectName()%></option>
                                                         <% } %>
                                                     </select>
                                                 </div>
@@ -162,10 +162,10 @@
                                                     <select name="brandID" class="form-control" required>
                                                         <%
                                                             BrandDAO brandDao = new BrandDAO();
-                                                            List<BrandDTO> brandList = brandDao.getAllBrands();
+                                                            List<BrandDTO> brandList = brandDao.getAllBrand();
                                                             for (BrandDTO brand : brandList) {
                                                         %>
-                                                        <option value="<%= brand.getBrandID()%>"><%= brand.getBrandName()%></option>
+                                                        <option value="<%= brand.getBrandId()%>"><%= brand.getBrandName()%></option>
                                                         <% } %>
                                                     </select>
                                                 </div>
@@ -263,11 +263,11 @@
                                     <%
                                         if (productList != null) {
                                             for (ProductDTO product : productList) {
-                                                CategoriesDTO userObject = categoriesDao.getCategoryById(product.getUserObjectID());
-                                                BrandDTO brandShow = brandDao.getBrandById(product.getBrandID());
+                                                UserObjectDTO userObject = categoriesDao.getUserObjectById(product.getUserOjectId());
+                                                BrandDTO brandShow = brandDao.getBrandById(product.getBrandId());
                                     %>
                                     <tr>
-                                        <td><img src="<%= product.getAvatar()%>" alt="<%= product.getName()%>" style="width: 70px; height: 70px;"></td>
+                                        <td><img src="<%= product.getAvatarPath()%>" alt="<%= product.getName()%>" style="width: 70px; height: 70px;"></td>
                                         <td><%= product.getName()%></td>
                                         <td><%= userObject.getUserObjectName()%></td> 
                                         <td><%= brandShow.getBrandName()%></td>
@@ -285,7 +285,7 @@
                                         </td>
                                         <td>
                                             <form action="ToggleFlashSaleController" method="POST">
-                                                <input type="hidden" name="productId" value="<%= product.getProductID()%>"/>
+                                                <input type="hidden" name="productId" value="<%= product.getProductId()%>"/>
                                                 <input type="hidden" name="action" value="toggleFlashSale"/>
                                                 <select name="Hot" onchange="this.form.submit()">
                                                     <option value="1" <%= product.isHot() ? "selected" : ""%>>On</option>
@@ -293,25 +293,29 @@
                                                 </select>
                                             </form>
                                         </td>
-                                        <td><%= product.getStock()%></td>
+                                        <td>
+                                            <%= "Cái này in ra stock mà tao chưa làm_Kí tên: Quý"
+                                            
+                                            %>
+                                        </td>
                                         <td>
                                             <form action="ToggleProductStatusController" method="POST">
-                                                <input type="hidden" name="productId" value="<%= product.getProductID()%>"/>
+                                                <input type="hidden" name="productId" value="<%= product.getProductId()%>"/>
                                                 <input type="hidden" name="action" value="toggleProductStatus"/>
                                                 <select name="Product_Status" onchange="this.form.submit()">
-                                                    <option value="1" <%= product.isProductStatus() ? "selected" : ""%>>Active</option>
+                                                    <option value="1" <%= product.isProductStatus()? "selected" : ""%>>Active</option>
                                                     <option value="0" <%= !product.isProductStatus() ? "selected" : ""%>>Inactive</option>
                                                 </select>
                                             </form>
                                         </td>
                                         <td>
-                                            <input type="hidden" name="productId"  value="<%=product.getProductID()%>" />
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal<%=product.getProductID()%>">
+                                            <input type="hidden" name="productId"  value="<%=product.getProductId()%>" />
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal<%=product.getProductId()%>">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
 
                                             <!-- Modal Update -->
-                                            <div class="modal fade" id="updateModal<%=product.getProductID()%>" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="updateModal<%=product.getProductId()%>" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -320,7 +324,7 @@
                                                         </div>
                                                         <form action="UpdateProductController" method="POST">
                                                             <div class="modal-body">
-                                                                <input type="hidden" name="productId"  value="<%=product.getProductID()%>" />
+                                                                <input type="hidden" name="productId"  value="<%=product.getProductId()%>" />
                                                                 <div class="input-group input-group-sm mb-3">
                                                                     <span class="input-group-text" id="inputGroup-sizing-sm">Product Name</span>
                                                                     <input name="name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<%= product.getName()%>">
@@ -333,33 +337,33 @@
 
                                                                 <div class="input-group input-group-sm mb-3">
                                                                     <span class="input-group-text" id="inputGroup-sizing-sm">Avatar(URL)</span>
-                                                                    <input name="avatar" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<%= product.getAvatar()%>">
+                                                                    <input name="avatar" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<%= product.getAvatarPath()%>">
                                                                 </div>
                                                                 <%
-                                                                    int selectedBrandID = product.getBrandID();
+                                                                    int selectedBrandID = product.getBrandId();
                                                                 %>
                                                                 <div class="input-group input-group-sm mb-3">
                                                                     <span class="input-group-text" id="inputGroup-sizing-sm">Brand</span>
                                                                     <select name="brandID" class="form-control">
                                                                         <<%
                                                                             for (BrandDTO brand : brandList) {
-                                                                                String selected = (brand.getBrandID() == selectedBrandID) ? "selected" : "";
+                                                                                String selected = (brand.getBrandId() == selectedBrandID) ? "selected" : "";
                                                                         %>
-                                                                        <option value="<%= brand.getBrandID()%>" <%= selected%>><%= brand.getBrandName()%></option>
+                                                                        <option value="<%= brand.getBrandId()%>" <%= selected%>><%= brand.getBrandName()%></option>
                                                                         <% } %>
                                                                     </select>
                                                                 </div>
                                                                 <%
-                                                                    int selectedCategoryID = product.getUserObjectID();
+                                                                    int selectedCategoryID = product.getUserOjectId();
                                                                 %>
                                                                 <div class="input-group input-group-sm mb-3">
                                                                     <span class="input-group-text" id="inputGroup-sizing-sm">Category</span>
                                                                     <select name="userObjectID" class="form-control">
                                                                         <%
-                                                                            for (CategoriesDTO category : categoriesList) {
-                                                                                String selected = (category.getUserObjectID() == selectedCategoryID) ? "selected" : "";
+                                                                            for (UserObjectDTO uOb : userObjectList) {
+                                                                                String selected = (uOb.getUserObjectId()== selectedCategoryID) ? "selected" : "";
                                                                         %>
-                                                                        <option value="<%= category.getUserObjectID()%>" <%= selected%>><%= category.getUserObjectName()%></option>
+                                                                        <option value="<%= uOb.getUserObjectId()%>" <%= selected%>><%= uOb.getUserObjectName()%></option>
                                                                         <% }%>
                                                                     </select>
                                                                 </div>
@@ -373,11 +377,11 @@
                                                                 </div>
                                                                 <div class="input-group input-group-sm mb-3">
                                                                     <span class="input-group-text" id="inputGroup-sizing-sm">Size</span>
-                                                                    <input name="size" type="number" step="0.01" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<%= product.getSize()%>">
+                                                                    <input name="size" type="number" step="0.01" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<%= "Cái này ở trang productDetail"%>">
                                                                 </div>
                                                                 <div class="input-group input-group-sm mb-3">
                                                                     <span class="input-group-text" id="inputGroup-sizing-sm">Stock</span>
-                                                                    <input name="stock" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<%= product.getStock()%>">
+                                                                    <input name="stock" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<%= "cái này cũng rứa"%>">
                                                                 </div>
                                                                 <div class="input-group input-group-sm mb-3">
                                                                     <span class="input-group-text" id="inputGroup-sizing-sm">Sale</span>

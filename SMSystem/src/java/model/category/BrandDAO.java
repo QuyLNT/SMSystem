@@ -5,10 +5,21 @@
  */
 package model.category;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author LENOVO
  */
 public class BrandDAO {
+    public List<BrandDTO> getAllBrand(){
+        List<BrandDTO> listBrand = new ArrayList();
+        return listBrand;
+    }
     
+    public BrandDTO getBrandById(int brandId){
+        BrandDTO brand = new BrandDTO();
+        return brand;
+    }
 }

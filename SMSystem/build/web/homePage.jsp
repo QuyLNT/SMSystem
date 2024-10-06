@@ -5,11 +5,11 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.ItemDTO"%>
-<%@page import="model.CartDTO"%>
+<%@page import="model.cart.CartItems"%>
+<%@page import="model.cart.CartDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="model.ProductDTO"%>
-<%@page import="model.UserDTO"%>
+<%@page import="model.product.ProductDTO"%>
+<%@page import="model.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -53,21 +53,21 @@
                     <div class="ht-left">
                         <div class="mail-service">
                             <i class="fa fa-envelope">
-                                minhquan141104@gmail.com
+                                smsystem@gmail.com
                             </i>
                         </div>
                         <div class="phone-service">
                             <i class="fa fa-phone">
-                                +84 78 566 3033
+                                +84 123456789
                             </i>
                         </div>
                     </div>
                     <%
-                        UserDTO u = (UserDTO) session.getAttribute("user");
+                        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                     %>
                     <div class="ht-right">
                         <div class="login-panel" id="user-btn">
-                            <i class="fa fa-user">  <%=u.getFullName()%></i>
+                            <i class="fa fa-user">  <%= (loginUser != null) ? loginUser.getFullName() : "Guest"%></i>
 
                         </div>
                         <section class="user">
@@ -102,7 +102,7 @@
                         <div class="col-lg-2 col-md-2">
                             <div class="logo">
                                 <a href="index.jsp">
-                                    <img src="favicon_io/android-chrome-192x192.png" height="40px">
+                                    <img src="img/logoweb.png" height="100%" width="100%">
                                 </a>
                             </div>
                         </div>
@@ -164,18 +164,18 @@
                                                         if (cart == null) {
                                                             cart = new CartDTO();
                                                         }
-                                                        List<ItemDTO> ls = cart.getList();
+                                                        List<CartItems> ls = cart.getCartItemsList();
                                                         if (ls != null) {
                                                             double total = 0;
                                                             int count = 0;
-                                                            for (ItemDTO ele : ls) {
-                                                                total += (ele.getPrice() * ele.getQuantity());
+                                                            for (CartItems ele : ls) {
+                                                                total += (ele.getCartItemId()* ele.getQuantity());
                                                     %>
                                                     <tr>
-                                                        <td class="si-pic"><img src="<%= ele.getProduct().getImg()%>" style="height: 76px"></td>
+                                                        <td class="si-pic"><img src="<%= ele.getProduct().getAvatarPath()%>" style="height: 76px"></td>
                                                         <td class="si-text">
                                                             <div class="product-selected">
-                                                                <p>$<%= String.format("%.1f", ele.getPrice())%> x <%= ele.getQuantity()%></p>
+                                                                <p>$<%= String.format("%.1f", ele.getProduct().getPrice())%> x <%= ele.getQuantity()%></p>
                                                                 <h6><%= ele.getProduct().getName()%></h6>
                                                                 <h6>Size <%=ele.getSize()%></h6>
                                                             </div>
@@ -340,12 +340,12 @@
                         </div>
                         <div class="product-slider owl-carousel">
                             <%
-                                List<ProductDTO> ls1 = (List) session.getAttribute("womenList");
+                                List<ProductDTO> ls1 = (List<ProductDTO>) session.getAttribute("womenList");
                                 for (ProductDTO ele : ls1) {
                             %>
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="<%=ele.getImg()%>" alt="">
+                                    <img src="<%=ele.getAvatarPath()%>" alt="">
                                     <%
                                         if (ele.getSale() != 0) {
                                     %>
@@ -420,13 +420,13 @@
                         </div>
                         <div class="product-slider owl-carousel">
                             <%
-                                List<ProductDTO> ls = (List) session.getAttribute("menList");
+                                List<ProductDTO> ls = (List<ProductDTO>) session.getAttribute("menList");
                                 for (ProductDTO ob : ls) {
 
                             %>
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="<%=ob.getImg()%>" alt="">
+                                    <img src="<%=ob.getAvatarPath()%>" alt="">
                                     <%if (ob.getSale() != 0) {
                                     %>
                                     <div class="sale">Sale</div>
@@ -518,12 +518,12 @@
                         </div>
                         <div class="product-slider owl-carousel">
                             <%
-                                List<ProductDTO> ls2 = (List) session.getAttribute("kidList");
+                                List<ProductDTO> ls2 = (List<ProductDTO>) session.getAttribute("kidList");
                                 for (ProductDTO ele : ls2) {
                             %>
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="<%=ele.getImg()%>" alt="">
+                                    <img src="<%=ele.getAvatarPath()%>" alt="">
                                     <%
                                         if (ele.getSale() != 0) {
                                     %>
@@ -749,32 +749,32 @@
                 <div class="logo-carousel owl-carousel">
                     <div class="logo-item">
                         <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-1.png">
+                            <img src="img/nike.png" width="150" height="150">
                         </div>
                     </div>
                     <div class="logo-item">
                         <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-2.png">
+                            <img src="img/adidas.png" width="150" height="150">
                         </div>
                     </div>
                     <div class="logo-item">
                         <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-3.png">
+                            <img src="img/puma.png" width="150" height="150">
                         </div>
                     </div>
                     <div class="logo-item">
                         <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-4.png">
+                            <img src="img/asics.png" width="150" height="150">
                         </div>
                     </div>
                     <div class="logo-item">
                         <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-5.png">
+                            <img src="img/vans.png" width="150" height="150">
                         </div>
                     </div>
                     <div class="logo-item">
                         <div class="tablecell-inner">
-                            <img src="img/logo-carousel/logo-1.png">
+                            <img src="img/newbalance.png" width="150" height="150">
                         </div>
                     </div>
                 </div>
@@ -790,13 +790,13 @@
                         <div class="footer-left">
                             <div class="footer-logo">
                                 <a href="index.jsp">
-                                    <img src="favicon_io/android-chrome-192x192.png" alt="">
+                                    <img src="img/logoweb.png" alt="">
                                 </a>
                             </div>
                             <ul>
-                                <li>1A Yet Kieu . Ha Noi</li>
-                                <li>Phone: +84 78 566 3033</li>
-                                <li>Email: minhquan141104@gmail.com</li>
+                                <li>Lô E2a-7, Đường D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Hồ Chí Minh 700000</li>
+                                <li>Phone: +84 123456789</li>
+                                <li>Email: smsystem@gmail.com</li>
                             </ul>
                             <div class="footer-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>

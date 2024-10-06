@@ -5,6 +5,8 @@
  */
 package model.product;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author LENOVO
@@ -13,6 +15,7 @@ public class ProductDTO {
     private int productId;
     private int brandId;
     private int userOjectId;
+    ArrayList<ProductImageDTO> listImages;
     private String detail;
     private boolean hot;
     private String name;
@@ -20,12 +23,13 @@ public class ProductDTO {
     private float price;
     private float sale;
     private int warrantyPeriod;
-    private boolean productStaus;
+    private boolean productStatus;
 
     public ProductDTO() {
         this.productId = 0;
         this.brandId = 0;
         this.userOjectId = 0;
+        this.listImages = new ArrayList<>();
         this.detail = "";
         this.hot = true;
         this.name = "";
@@ -33,13 +37,14 @@ public class ProductDTO {
         this.price = 0.00f;
         this.sale = 0.0f;
         this.warrantyPeriod = 0;
-        this.productStaus = false;
+        this.productStatus = false;
     }
 
-    public ProductDTO(int productId, int brandID, int userOjectId, String detail, boolean hot, String name, String color, float price, float sale, int warrantyPeriod, boolean productStaus) {
+    public ProductDTO(int productId, int brandID, int userOjectId, String detail, boolean hot, String name, String color, float price, float sale, int warrantyPeriod, boolean productStaus,ArrayList<ProductImageDTO> listImages) {
         this.productId = productId;
         this.brandId = brandID;
         this.userOjectId = userOjectId;
+        this.listImages= listImages;
         this.detail = detail;
         this.hot = hot;
         this.name = name;
@@ -47,17 +52,29 @@ public class ProductDTO {
         this.price = price;
         this.sale = sale;
         this.warrantyPeriod = warrantyPeriod;
-        this.productStaus = productStaus;
+        this.productStatus = productStaus;
+    }
+
+    public int getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(int brandId) {
+        this.brandId = brandId;
+    }
+
+    public ArrayList<ProductImageDTO> getListImages() {
+        return listImages;
+    }
+
+    public void setListImages(ArrayList<ProductImageDTO> listImages) {
+        this.listImages = listImages;
     }
 
     public int getProductId() {
         return productId;
     }
-
-    public int getBrandID() {
-        return brandId;
-    }
-
+    
     public int getUserOjectId() {
         return userOjectId;
     }
@@ -90,17 +107,14 @@ public class ProductDTO {
         return warrantyPeriod;
     }
 
-    public boolean isProductStaus() {
-        return productStaus;
+    public boolean isProductStatus() {
+        return productStatus;
     }
 
     public void setProductId(int productId) {
         this.productId = productId;
     }
 
-    public void setBrandID(int brandID) {
-        this.brandId = brandID;
-    }
 
     public void setUserOjectId(int userOjectId) {
         this.userOjectId = userOjectId;
@@ -134,12 +148,24 @@ public class ProductDTO {
         this.warrantyPeriod = warrantyPeriod;
     }
 
-    public void setProductStaus(boolean productStaus) {
-        this.productStaus = productStaus;
+    public void setProductStatus(boolean productStatus) {
+        this.productStatus = productStatus;
+    }
+         
+    public String getAvatarPath(){
+        String avatarPath = null;
+        for(ProductImageDTO ele: this.listImages){
+            if(ele.getIsAvatar() == true){
+                avatarPath = ele.getImagePath();
+            }
+        }
+        return avatarPath;
     }
     
     
-    
-    
+    // CÁI NÀY CHƯA LÀM NÈ, LÀM ĐEEEEEEE
+    public int getStock(){
+        return 9999;
+    }
  
 }
