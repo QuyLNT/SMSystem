@@ -30,6 +30,10 @@ public class MainController extends HttpServlet {
     private final static String WELLCOME_PAGE="login.jsp";
     private final static String LOGIN="Sign In" ;
     private final static String LOGIN_CONTROLLER="LoginController" ;
+    
+    private final static String CREATE_PRODUCT = "CreateProduct" ;
+    private final static String CREATE_PRODUCT_CONTROLLER = "CreateProductController" ;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,6 +42,8 @@ public class MainController extends HttpServlet {
             String action = request.getParameter("action");
             if(LOGIN.equals(action)){
                 url=LOGIN_CONTROLLER;
+            }if(CREATE_PRODUCT.equals(action)){
+                url=CREATE_PRODUCT_CONTROLLER;
             }
         }catch(Exception e){
            log("Error at MainController" + e.toString());
