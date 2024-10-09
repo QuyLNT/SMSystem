@@ -53,10 +53,6 @@ h2 {
   background-color: #d1d1d1;
 }
 
-.haveAccount:hover {
-  color: #111111;
-}
-
 form {
   display: flex;
   flex-direction: column;

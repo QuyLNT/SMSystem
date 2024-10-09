@@ -4,13 +4,13 @@
     Author     : Luu Minh Quan
 --%>
 
-<%@page import="model.cart.CartItems"%>
-<%@page import="model.cart.CartDTO"%>
-<%@page import="model.user.UserDTO"%>
-<%@page import="model.product.ProductDAO"%>
-<%@page import="model.product.ProductImageDTO"%>
+<%@page import="model.ItemDTO"%>
+<%@page import="model.CartDTO"%>
+<%@page import="model.UserDTO"%>
+<%@page import="model.ProductDAO"%>
+<%@page import="model.ProductIMG"%>
 <%@page import="java.util.List"%>
-<%@page import="model.product.ProductDTO"%>
+<%@page import="model.ProductDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -165,18 +165,18 @@
                                                         if (cart == null) {
                                                             cart = new CartDTO();
                                                         }
-                                                        List<CartItems> ls = cart.getCartItemsList();
+                                                        List<ItemDTO> ls = cart.getList();
                                                         if (ls != null) {
                                                             double total = 0;
                                                             int count = 0;
-                                                            for (CartItems ele : ls) {
-                                                                total += (ele.getProduct().getPrice()* ele.getQuantity());
+                                                            for (ItemDTO ele : ls) {
+                                                                total += (ele.getPrice() * ele.getQuantity());
                                                     %>
                                                     <tr>
-                                                        <td class="si-pic"><img src="<%= ele.getProduct().getAvatar()%>" style="height: 76px"></td>
+                                                        <td class="si-pic"><img src="<%= ele.getProduct().getImg()%>" style="height: 76px"></td>
                                                         <td class="si-text">
                                                             <div class="product-selected">
-                                                                <p>$<%= String.format("%.1f", ele.getProduct().getPrice())%> x <%= ele.getQuantity()%></p>
+                                                                <p>$<%= String.format("%.1f", ele.getPrice())%> x <%= ele.getQuantity()%></p>
                                                                 <h6><%= ele.getProduct().getName()%></h6>
                                                                 <h6>Size <%=ele.getSize()%></h6>
                                                             </div>
@@ -362,7 +362,7 @@
                             <!-- Mot san pham o day -->
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <img src="<%=p.getAvatar()%>" alt="">
+                                    <img src="<%=p.getImg()%>" alt="">
                                     <%
                                         if (p.getSale() != 0) {
                                     %>
@@ -394,11 +394,11 @@
 
                                 <div class="pi-text">
                                     <%
-                                        if (p.getUserOjectId()== 1) {
+                                        if (p.getUoId() == 1) {
                                     %>
                                     <div class="catagory-name">Men</div>
                                     <%
-                                    } else if (p.getUserOjectId()== 2) {
+                                    } else if (p.getUoId() == 2) {
                                     %>
                                     <div class="catagory-name">Women</div>
                                     <%
